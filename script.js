@@ -1,7 +1,7 @@
-var count = 0;
-var amount = 100;
-var firstClickUpgrade = 10;
-var swampGeneratorBasicCost = 100;
+var count = 0; // Starter number of frogs
+var amount = 1; // Starter amount of frogs per click
+var firstClickUpgrade = 10; // The cost of the first upgrade of click
+var swampGeneratorBasicCost = 100; // The cost of the first swamp generator
 var swampGeneratorAmount = 0; // swampGenerator is the amount of swamp generators the player has
 
 counter = document.getElementById("count");
@@ -38,6 +38,7 @@ window.onload = function(){
 
         count += amount;
         counter.innerHTML = count;
+
     });
 
 }
@@ -49,6 +50,5 @@ function swampGenerator(){
         counter.innerHTML = count;
     }, 1000);
 }
-
 
 
