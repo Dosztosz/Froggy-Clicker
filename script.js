@@ -51,4 +51,3 @@ function swampGenerator(){
     }, 1000);
 }
 
-
