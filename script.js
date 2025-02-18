@@ -7,7 +7,8 @@ var swampGeneratorAmount = 0; // swampGenerator is the amount of swamp generator
 function fetching(){
     fetch("upgrade.json")
   .then(response => response.json())
-  .then(json => console.log(json));
+  .then(json => clickingboost = {json});
+
 }
 
 
@@ -45,11 +46,16 @@ window.onload = function(){
 
         count += amount;
         counter.innerHTML = count;
-        fetching();
+        
     });
+    fetching();
 
-    if(count >= 10){
-
+    if(clickingboost[name] == "Froggy Spanker"){
+        console.log(clickingboost.cost);
+    }
+    else{
+        console.log("No upgrade");
+        console.log(clickUpgrade)
     }
 }
 
