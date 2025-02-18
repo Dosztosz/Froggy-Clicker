@@ -1,7 +1,13 @@
-{"clickUpgrade":
+{"firstClickUpgrade":
     {
         "name": "Froggy Spanker",
         "cost": 10,
         "amount": 1
-    }
+    },
+  "swampGenerator":
+  {
+    "name": "Swamp Generator",
+    "cost": 100,
+    "amount": 0.1
+  }  
 }
