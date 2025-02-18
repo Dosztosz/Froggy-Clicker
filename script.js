@@ -51,6 +51,10 @@ function swampGeneratorUpgrade(){
     }
 }
 
+
+
+// Onload Section - Everything here loads at start of website
+
 window.onload = function(){
     counter.innerHTML = "0";
     document.getElementById('myBtn').addEventListener('click', function addcount(){
@@ -61,6 +65,8 @@ window.onload = function(){
     });
     fetching();
 
+
+    // Function that checks if you unlocked another upgrade
     setInterval(function(){
 
         if(count >= firstClickUpgrade.cost){
@@ -71,6 +77,11 @@ window.onload = function(){
             document.getElementById("swampGenerator").style.display = "block";
         }
     }, 100);
+
+    // Saving Function
+    setInterval(function(){
+        alert("Saving...")
+    }, 10000);
 }
 
 function swampGeneratorFunction(){
