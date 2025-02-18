@@ -1,7 +1,5 @@
 var count = 0; // Starter number of frogs
-var amount = 1; // Starter amount of frogs per click
-var firstClickUpgrade = { name: "Basic Upgrade", cost: 10, amount: 1 }; // The cost of the first upgrade of click
-var swampGeneratorBasicCost = 100; // The cost of the first swamp generator
+var amount = 40; // Starter amount of frogs per click
 var swampGeneratorAmount = 0; // swampGenerator is the amount of swamp generators the player has
 
 function fetching(){
@@ -11,6 +9,7 @@ function fetching(){
         upgradeData = json;
         // Assuming the JSON has a property for firstClickUpgrade
         firstClickUpgrade = upgradeData.firstClickUpgrade || firstClickUpgrade;
+        swampGenerator = upgradeData.swampGenerator || swampGenerator;
     });
 }
 
@@ -19,29 +18,36 @@ function fetching(){
 counter = document.getElementById("count");
 
 function clickUpgrade(){
-    clickUpgradeCost = document.getElementById("clickUpgradeCost");
+    clickUpgradeText = document.getElementById("clickUpgradeCost");
 
     if(count >= firstClickUpgrade.cost){
         count -= firstClickUpgrade.cost;
         amount += firstClickUpgrade.amount;
         firstClickUpgrade.cost *= 2;
         counter.innerHTML = count;
-        clickUpgradeCost.innerHTML = firstClickUpgrade.cost + " frogs";
+        clickUpgradeText.innerHTML = firstClickUpgrade.cost + " frogs";
     }
     else{
-        clickUpgradeCost.innerHTML = "Not enough points. You need " + firstClickUpgrade.cost + " frogs to buy an upgrade.";    
+        clickUpgradeText.innerHTML = "Not enough points. You need " + firstClickUpgrade.cost + " frogs to buy an upgrade.";    
     }
 }
 
 function swampGeneratorUpgrade(){
-    if(count >= swampGeneratorBasicCost){
-        count -= swampGeneratorBasicCost;
-        swampGeneratorAmount += 0.1;
+    swampGeneratorText = document.getElementById("swampUpgradeCost");
+
+    if(count >= swampGenerator.cost){
+        count -= swampGenerator.cost;
+        swampGeneratorAmount += swampGenerator.amount;
         swampGeneratorAmount = Math.round(swampGeneratorAmount * 100) / 100
         counter.innerHTML = count;
+        swampGenerator.cost *= 2;
+        swampGeneratorText.innerHTML = swampGenerator.cost + " frogs";
         if(swampGeneratorAmount == 0.1){
-            swampGenerator();
+            swampGeneratorFunction();
         }
+    }
+    else{
+        swampGeneratorText.innerHTML = "Not enough points. You need " + swampGenerator.cost + " frogs to buy an upgrade.";    
     }
 }
 
@@ -57,23 +63,17 @@ window.onload = function(){
 
     setInterval(function(){
 
-        switch(count){
-            case 10:
-                document.getElementById("upgrade1").style.display = "block";
-                break;
-            case 100:
-                document.getElementById("swampGenerator").style.display = "block";
-        }
-
         if(count >= firstClickUpgrade.cost){
             document.getElementById("upgrade1").style.display = "block";
         }
-    }, 1000);
 
-    console.log(firstClickUpgrade);
+        if(count >= swampGenerator.cost){
+            document.getElementById("swampGenerator").style.display = "block";
+        }
+    }, 100);
 }
 
-function swampGenerator(){
+function swampGeneratorFunction(){
     setInterval(function(){
         count += swampGeneratorAmount;
         count = Math.round(count *100)/100
