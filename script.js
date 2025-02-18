@@ -4,6 +4,13 @@ var firstClickUpgrade = 10; // The cost of the first upgrade of click
 var swampGeneratorBasicCost = 100; // The cost of the first swamp generator
 var swampGeneratorAmount = 0; // swampGenerator is the amount of swamp generators the player has
 
+function fetching(){
+    fetch("upgrade.json")
+  .then(response => response.json())
+  .then(json => console.log(json));
+}
+
+
 counter = document.getElementById("count");
 
 function clickUpgrade(){
@@ -38,9 +45,12 @@ window.onload = function(){
 
         count += amount;
         counter.innerHTML = count;
-
+        fetching();
     });
 
+    if(count >= 10){
+
+    }
 }
 
 function swampGenerator(){

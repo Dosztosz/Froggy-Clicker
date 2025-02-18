@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <div class="game">
@@ -12,13 +13,17 @@
             <h1 id="count">0</h1>
         </div>
         <img src="img/regular_frog.png" width="50px" height="50px" id="myBtn">
-        <p id="clickUpgrade">Add +1 Upgrade cost:<span id="clickUpgradeCost">10 frogs</span></p>
-        <button onclick="clickUpgrade()">Click!</button>
+        <div id="upgrade1" class="upgrade">
+            <p id="clickUpgrade">Add +1 Upgrade cost:<span id="clickUpgradeCost">10 frogs</span></p>
+            <button onclick="clickUpgrade()">Click!</button>
+        </div>
 
         <p id="clickUpgrade">Buy Swamp Generator:<span id="swampUpgradeCost">100 frogs</span></p>
         <button onclick="swampGeneratorUpgrade()">Click!</button>
     </div>
 
+
+    <script type="text/javascript" src="script.js"></script>
 </body>
-<script src="script.js"></script>
+
 </html>
